@@ -1,0 +1,17 @@
+
+
+Soloution:class Solution {
+    public int removeDuplicates(int[] arr) {
+
+        // This is the most optimized code.......
+
+        int count=0;
+
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]!=arr[count])
+            count++;
+            arr[count]=arr[i];
+
+        }
+
+return count+1;
