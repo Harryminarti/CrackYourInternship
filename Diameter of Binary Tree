@@ -1,0 +1,80 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+
+// takig tc O(N^2)
+
+// public int height(TreeNode root){
+//     if(root==null){
+//         return 0;
+//     }
+//     int left =height(root.left);
+//     int right = height(root.right);
+//     return Math.max(left,right)+1;
+// }
+
+// public int dbt(TreeNode root){
+
+//     if(root==null){
+//             return 0;
+//         }
+
+//         int left = dbt(root.left);
+//         int right = dbt(root.right);
+
+//         int dia = height(root.left)+height(root.right)+1;
+
+//         return Math.max(dia,Math.max(left,right));
+
+
+       
+
+// }
+
+public class Node{
+    int hei;
+    int diam;
+
+    public Node(int hei,int diam){
+        this.hei= hei;
+        this.diam= diam;
+    }
+}
+
+public Node dbt (TreeNode root){
+    if(root==null){
+        return new Node(0,0);
+    }
+    Node left = dbt(root.left);
+    Node right = dbt(root.right);
+
+    int height = Math.max(left.hei,right.hei)+1;
+    int diam = Math.max(left.hei+right.hei+1,Math.max(right.diam,left.diam));
+
+    return new Node(height,diam);
+    
+}
+
+
+
+    public int diameterOfBinaryTree(TreeNode root) {
+
+    Node t= dbt(root);
+    return t.diam-1;
+
+        
+    }
+}
