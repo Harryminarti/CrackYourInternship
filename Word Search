@@ -1,0 +1,42 @@
+class Solution {
+
+    public boolean find(int n,int m,char arr[][],int i,int j,String word,int k){
+
+      if(k==word.length()){
+      return true;
+                   }
+      if(i<0 || j<0 || i==n || j==m || arr[i][j]!=word.charAt(k)){
+      return false;
+                    }
+      char ch = arr[i][j];
+      arr[i][j]='#';
+
+      boolean opt1 = find(n,m,arr,i,j+1,word,k+1);
+      boolean opt2 = find(n,m,arr,i+1,j,word,k+1);
+      boolean opt3 = find(n,m,arr,i-1,j,word,k+1);
+      boolean opt4 = find(n,m,arr,i,j-1,word,k+1);
+
+      arr[i][j]=ch;
+
+      return opt1||opt2||opt3||opt4;
+
+
+    }
+
+
+    public boolean exist(char[][] arr, String word) {
+
+        int k=0;
+
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++){
+                if(arr[i][j]==word.charAt(k)){
+                    if(find(arr.length,arr[i].length,arr,i,j,word,k))
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+}
