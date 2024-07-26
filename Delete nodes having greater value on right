@@ -1,0 +1,97 @@
+*/
+class Solution
+{
+    Node compute(Node head)
+    {
+        
+        
+        // your code here  .. it takes tc== O(n) & sc= o(1)
+        /// here is short code for this questions........
+        
+        
+        Node temp = head;
+        
+        while(temp.next!=null){
+            if(temp.data<temp.next.data){
+                temp.data = temp.next.data;
+                temp.next = temp.next.next;
+                temp= head;
+            }else{
+                temp = temp.next;
+            }
+        }
+        
+        return head;
+        
+        
+        
+        
+        // your code here  .. it takes tc== O(n) & sc= o(1)
+        /// But its code is too long......
+        
+        // if(head==null||head.next==null)
+        // return head;
+        
+        
+        // Node curr = head;
+        // Node prev =null;
+        // Node next = null;
+        
+
+        
+        // while(curr!=null){
+        //     next = curr.next;
+        //     curr.next = prev ;
+        //     prev =curr;
+        //     curr =next;
+        // }
+        
+        
+        // int larg=prev.data;
+        
+        // Node temp =null;
+        // Node last =null;
+        
+        // while(prev.next!=null){
+        //     Node n = prev.next;
+        //     if(temp==null){
+        //         temp=last = prev;
+        //         last.next =null;
+        //     }else{
+        //         if(larg<=prev.data){
+        //             last.next = prev;
+        //             larg=prev.data;
+        //             last = prev;
+        //             last.next =null;
+        //         }
+        //     }
+        //     prev =n;
+        // }
+        
+        // if(larg<=prev.data){
+        //     last.next = prev;
+        // }
+        
+        
+        //  curr = temp;
+        //  prev =null;
+        //  next = null;
+        
+
+        
+        // while(curr!=null){
+        //     next = curr.next;
+        //     curr.next = prev ;
+        //     prev =curr;
+        //     curr =next;
+        // }
+        
+        
+        // return prev;
+        
+        
+        
+    
+    }
+}
+  
