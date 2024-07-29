@@ -1,0 +1,88 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        List<List<Integer>> ll = new ArrayList<>();
+
+        Arrays.sort(nums);
+
+        for(int i=0;i<nums.length-2;i++){
+            if(i!=0 && nums[i]==nums[i-1])
+            continue;
+
+            int j= i+1;
+            int k = nums.length-1;
+            while(j<k){
+           
+
+                int sum = nums[i]+nums[j]+nums[k];
+
+                if(sum==0){
+                    List<Integer>l = new ArrayList<>();
+                    l.add(nums[i]);
+                    l.add(nums[j]);
+                    l.add(nums[k]);
+
+                    ll.add(l);
+                    j++;
+                    k--;
+
+                    while(j<k && nums[j]==nums[j-1])
+                    j++;
+                    while(k>j && nums[k]==nums[k+1])
+                    k--;
+                }else if(sum<0){
+                    j++;
+                }else{
+                    k--;
+                }
+
+            }
+        }
+
+        return ll;
+
+
+    //     // Trying to solve it again....
+
+
+    //     List<List<Integer>>arr = new ArrayList<>();
+    //     Arrays.sort(nums);
+
+    // for(int si=0;si<nums.length;si++){
+    //         if(si>0 && nums[si]==nums[si-1]){
+    //             continue;
+    //         }
+            
+    //     int mid = si+1;
+    //     int ei=nums.length-1;
+
+    //     while(mid<ei){
+        
+    //      int sum = nums[si]+nums[mid]+nums[ei];
+
+    //         if(sum<0){
+    //             mid++;
+
+    //         }else if(sum>0){
+    //             ei--;
+
+    //         }else{
+    //             List<Integer>l =new ArrayList<>();
+    //             l.add(nums[si]);
+    //             l.add(nums[mid]);
+    //             l.add(nums[ei]);
+
+    //             arr.add(l);
+    //             mid++;
+    //             ei--;
+    //             while(mid<ei && nums[mid]==nums[mid-1])
+    //             mid++;
+    //             while(ei>mid && nums[ei]==nums[ei+1])
+    //             ei--;
+    //         }
+    //     }
+    //     }
+    //  return arr;        
+            
+    }
+}
