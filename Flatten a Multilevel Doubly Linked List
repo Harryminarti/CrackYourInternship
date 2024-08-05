@@ -1,0 +1,42 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node prev;
+    public Node next;
+    public Node child;
+};
+*/
+
+class Solution {
+    public void traverse(Node head,ArrayList<Node>arr){
+        if(head==null)
+        return;
+        arr.add(head);
+        traverse(head.child,arr);
+        traverse(head.next,arr);
+    }
+    public Node flatten(Node head) {
+        ArrayList<Node> arr = new ArrayList<>();
+        traverse(head,arr);
+
+        Node temp = null;
+        Node track =null;
+
+        for(int i=0;i<arr.size();i++){
+            Node t =arr.get(i);
+          
+            t.child=null;
+            if(temp==null){
+                temp =track =t;
+    
+            }else{
+                temp.next = t;
+                t.prev =temp;
+                temp = t;
+                
+            }
+        }
+return track;
+    }
+}
